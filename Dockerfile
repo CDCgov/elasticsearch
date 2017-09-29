@@ -1,10 +1,10 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.0
+FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.2
 
 MAINTAINER Tim Taylor <ttaylor@mitre.org>
 
 # ElasticSearch image for OpenShift 3 with the following properties:
 #   - runs under the restricted (default) Security Context Constraints
-#   - runs without XPACK (specifically with xpack.security.enabled=false)
+#   - runs without XPACK (set in custom elasticsearch.yml)
 #
 #
 # Volumes:
@@ -16,7 +16,7 @@ EXPOSE 9300
 USER 0
 
 ENV ES_HOME=/usr/share/elasticsearch \
-    ES_VER=5.6.0
+    ES_VER=5.6.2
 
 
 #WORKDIR ${ES_HOME}
