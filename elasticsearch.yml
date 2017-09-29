@@ -1,0 +1,21 @@
+#######################
+# The following is from the official elasticsearch.yml file
+#######################
+
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+discovery.zen.minimum_master_nodes: 1
+
+#######################
+# The following are custom settings that are useful in an OpenShift environment
+#######################
+
+# For development environments that need to work with a simple and
+#   basic elastic search capability
+#   REMOVE THESE SETTINGS FOR PRODUCTION
+#   see README for more details
+xpack.security.enabled: false
