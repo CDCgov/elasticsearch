@@ -46,6 +46,6 @@ RUN chown -R 1000:0 ${ES_HOME} && \
     chmod g+rwx ${ES_HOME} && \
     chmod g+rw ${ES_HOME}/{config,data,logs}
 
-USER 1000
+USER 1001
 
 # use the default RUN directive from official container
