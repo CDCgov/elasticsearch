@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Template
 labels:
   template: elasticsearch-ephemeral-template
-message: :-
+message: |-
   The following service(s) have been created in your project: ${ELASTICSEARCH_SERVICE_NAME}.
 
    Connection URL: http://${ELASTICSEARCH_SERVICE_NAME}:9200/
@@ -67,7 +67,9 @@ objects:
       spec:
         containers:
         - capabilities: {}
-          env: {}
+          env:
+          - name: ES_JAVA_OPTS
+            value: "-Xms${MEMORY_LIMIT} -Xmx${MEMORY_LIMIT}"
           image: ' '
           imagePullPolicy: IfNotPresent
           livenessProbe:
@@ -82,8 +84,8 @@ objects:
           - containerPort: 9300
             protocol: TCP
           resources:
-            limits:
-              memory: ${MEMORY_LIMIT}
+            requests:
+              memory: ${MEMORY_LIMIT}i
           securityContext:
             capabilities: {}
             privileged: false
@@ -104,7 +106,7 @@ objects:
         - elasticsearch
         from:
           kind: ImageStreamTag
-          name: ocp-elasticsearch:${ELASTICSEARCH_VERSION}
+          name: ${ELASTICSEARCH_IMAGE}:${ELASTICSEARCH_VERSION}
           namespace: ${NAMESPACE}
         lastTriggerImage: ""
       type: ImageChange
@@ -115,7 +117,7 @@ parameters:
   displayName: Memory Limit
   name: MEMORY_LIMIT
   required: true
-  value: 512Mi
+  value: 512M
 - description: The OpenShift Namespace where the ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
@@ -125,6 +127,10 @@ parameters:
   name: ELASTICSEARCH_SERVICE_NAME
   required: true
   value: elasticsearch
+- description: The name of the Elasticsearch imagestream to be uesd.
+  displayName: Elasticsearch Image Name
+  name: ELASTICSEARCH_IMAGE
+  value: ocp-elasticsearch
 - description: Volume space available for data, e.g. 512Mi, 2Gi.
   displayName: Volume Capacity
   name: VOLUME_CAPACITY

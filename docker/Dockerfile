@@ -42,7 +42,7 @@ COPY elasticsearch.yml /usr/share/elasticsearch/config/
 
 
 
-RUN chown -R 1000:0 ${ES_HOME} && \
+RUN chown -R 1001:0 ${ES_HOME} && \
     chmod g+rwx ${ES_HOME} && \
     chmod g+rw ${ES_HOME}/{config,data,logs}
 
