@@ -1,6 +1,6 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.2
 
-MAINTAINER Tim Taylor <mpx1@cdc.giv>
+MAINTAINER Tim Taylor <mpx1@cdc.gov>
 
 # ElasticSearch image for OpenShift 3 with the following properties:
 #   - runs under the restricted (default) Security Context Constraints
