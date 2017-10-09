@@ -122,7 +122,7 @@ parameters:
   displayName: Elasticsearch Image Name
   name: ELASTICSEARCH_IMAGE
   value: ocp-elasticsearch
-- description:: Version of Elasticsearch image to be used (5.5, 5.6, or latest).
+- description: Version of Elasticsearch image to be used (5.5, 5.6, or latest).
   displayName: Version of Elasticsearch Image
   name: ELASTICSEARCH_VERSION
   required: true
