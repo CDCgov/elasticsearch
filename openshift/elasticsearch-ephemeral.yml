@@ -63,11 +63,17 @@ objects:
             value: "-Xms${MEMORY_LIMIT} -Xmx${MEMORY_LIMIT}"
           image: ' '
           imagePullPolicy: IfNotPresent
+          readinessProbe:
+              httpGet:
+                path: /
+                port: 9200
+              initialDelaySeconds: 5
           livenessProbe:
-            initialDelaySeconds: 30
-            tcpSocket:
-              port: 9200
-            timeoutSeconds: 1
+              httpGet:
+                path: /
+                port: 9200
+              initialDelaySeconds: 30
+              periodSeconds: 60
           name: elasticsearch
           ports:
           - containerPort: 9200

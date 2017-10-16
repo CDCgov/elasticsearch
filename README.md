@@ -1,7 +1,7 @@
 ElasticSearch Container for OpenShift 3
 =======================================
 
-This repository containers Dockerfiles and templates for an Elasticsearch docker image intended for use with OpenShift v3.
+This repository contains Dockerfiles and templates for an Elasticsearch docker image intended for use with OpenShift v3.
 
 The Docker image contained here will run under the default OpenShift security
 context constraint of *restricted*.
